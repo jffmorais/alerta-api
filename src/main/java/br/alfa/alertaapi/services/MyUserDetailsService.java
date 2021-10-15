@@ -1,4 +1,4 @@
-package br.alfa.alertaapi;
+package br.alfa.alertaapi.services;
 
 import java.util.Optional;
 
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.alfa.alertaapi.models.MyUserDetails;
 import br.alfa.alertaapi.models.User;
+import br.alfa.alertaapi.repository.UserRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {

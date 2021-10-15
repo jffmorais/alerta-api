@@ -1,4 +1,4 @@
-package br.alfa.alertaapi;
+package br.alfa.alertaapi.repository;
 
 import java.util.Optional;
 

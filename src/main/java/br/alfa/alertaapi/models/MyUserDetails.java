@@ -1,5 +1,6 @@
 package br.alfa.alertaapi.models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +28,8 @@ public class MyUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
+		//return authorities;
+		return new ArrayList<>();
 	}
 
 	@Override
