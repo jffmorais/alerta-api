@@ -12,12 +12,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails {
 	
+	private int id;
 	private String userName;
 	private String password;
 	private boolean active;
 	private List<GrantedAuthority> authorities;
 
 	public MyUserDetails(User user) {
+		this.id = user.getId();
 		this.userName = user.getUserName();
 		this.password = user.getPassword();
 		this.active = user.isActive();
@@ -60,6 +62,10 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return active;
+	}
+	
+	public String getId() {
+		return Integer.toString(id);
 	}
 	
 }

@@ -54,7 +54,7 @@ public class JWTAuthFilter extends UsernamePasswordAuthenticationFilter {
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 		MyUserDetails usuarioData = (MyUserDetails) authResult.getPrincipal();
-		String token = JWT.create().withSubject(usuarioData.getUsername())
+		String token = JWT.create().withSubject(usuarioData.getId())
 				.withExpiresAt(new Date(System.currentTimeMillis() + Integer.parseInt(this.env.getProperty("jwt.timeout"))))
 				.sign(Algorithm.HMAC512(this.env.getProperty("jwt.sign")));
 		response.getWriter().write(token);

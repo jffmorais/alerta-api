@@ -11,6 +11,7 @@ public class ConfigProperties {
 	
 	private int timeout;
 	private String sign;
+	private String origins;
 	
 	public int getTimeout() {
 		return timeout;
@@ -23,6 +24,12 @@ public class ConfigProperties {
 	}
 	public void setSign(String sign) {
 		this.sign = sign;
+	}
+	public String getOrigins() {
+		return origins;
+	}
+	public void setOrigins(String origins) {
+		this.origins = origins;
 	}
 
 }

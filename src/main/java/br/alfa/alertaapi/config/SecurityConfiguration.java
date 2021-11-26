@@ -1,5 +1,7 @@
 package br.alfa.alertaapi.config;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -45,24 +47,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //			.and().formLogin();
 		http.csrf().disable().authorizeRequests()
 			.antMatchers(HttpMethod.POST, "/login").permitAll()
+			.antMatchers(HttpMethod.POST, "/api/cadastrar").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.addFilter(new JWTAuthFilter(authenticationManager(), env))
 			.addFilter(new JWTValidarFilter(authenticationManager(), env))
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 	}
 
-	@Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
+//	@Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
 //        configuration.setAllowedOrigins(Arrays.asList("*"));
 //        configuration.setAllowedMethods(Arrays.asList("*"));
 //        configuration.setAllowedHeaders(Arrays.asList("*"));
 //        configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 	
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
