@@ -31,6 +31,11 @@ public class AlertaService {
 		return alertRepo.findUserAlerts(id);
 	}
 	
+	public Alert getAlert(int id) {
+		return alertRepo.findAlertById(id);
+	}
+	
+	
 	public Alert newAlert(Alert alerta) {
 		alerta.setCreatedAt(LocalDateTime.now());
 		return alertRepo.save(alerta);

@@ -58,4 +58,16 @@ public class AlertaController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
+	@GetMapping("/alerta")
+	public ResponseEntity<Alert> pegarAlertas(@RequestParam int id){
+		logger.info("ALERTA ID: " + id);
+		Optional<Alert> alerta = Optional.ofNullable(alertServ.getAlert(id));
+		if (alerta.isPresent()) {
+			logger.info("DEU TUDO CERTO");
+			return ResponseEntity.ok(alerta.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }
